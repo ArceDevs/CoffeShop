@@ -1,0 +1,118 @@
+﻿<Application x:Class="CoffeeDBIntegrada.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CoffeeDBIntegrada"
+             
+             
+             xmlns:viewModel="clr-namespace:CoffeeDBIntegrada.MVVM.ViewModel"
+             xmlns:view="clr-namespace:CoffeeDBIntegrada.MVVM.View"
+             
+             xmlns:UserViewModel="clr-namespace:CoffeeDBIntegrada.MVVM.ViewModel.Users"
+             xmlns:UserView="clr-namespace:CoffeeDBIntegrada.MVVM.View.Users"
+             
+             xmlns:ProviderViewModel="clr-namespace:CoffeeDBIntegrada.MVVM.ViewModel.Providers"
+             xmlns:ProviderView="clr-namespace:CoffeeDBIntegrada.MVVM.View.Providers"
+             
+             xmlns:ProductViewModel="clr-namespace:CoffeeDBIntegrada.MVVM.ViewModel.Products"
+             xmlns:ProductView="clr-namespace:CoffeeDBIntegrada.MVVM.View.Products"
+             
+             xmlns:SellsViewModel="clr-namespace:CoffeeDBIntegrada.MVVM.ViewModel.Sells"
+             xmlns:SellsView="clr-namespace:CoffeeDBIntegrada.MVVM.View.Sells"
+             
+             xmlns:RestockViewModel="clr-namespace:CoffeeDBIntegrada.MVVM.ViewModel.Restock"
+             xmlns:RestockView="clr-namespace:CoffeeDBIntegrada.MVVM.View.Restock"
+             
+             
+             
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/BtnDefault.xaml"/>
+                <ResourceDictionary Source="Theme/DataPickerDefault.xaml"/>
+                <ResourceDictionary Source="Theme/ComboBoxDefault.xaml"/>
+                <ResourceDictionary Source="Theme/TextBoxDefault.xaml"/>
+                <ResourceDictionary Source="Theme/BtnCloseMin.xaml"/>
+                <ResourceDictionary Source="Theme/DataGridDefault.xaml"/>
+                <ResourceDictionary Source="Theme/LabelDefault.xaml"/>
+                <ResourceDictionary Source="Theme/BorderDefault.xaml"/>
+                <ResourceDictionary Source="Theme/BtnTable.xaml"/>
+                <ResourceDictionary Source="Theme/BtnToggleButtonDefault.xaml"/>
+                <ResourceDictionary Source="Theme/TextBlockDefault.xaml"/>
+                <ResourceDictionary Source="Theme/TextArea.xaml"/>
+                <ResourceDictionary Source="Theme/ListBoxProductTable.xaml"/>
+                <ResourceDictionary Source="Theme/ListBoxCategory.xaml"/>
+                <ResourceDictionary Source="Theme/BtnUpDown.xaml"/>
+                <ResourceDictionary Source="Theme/RadioButtonMenu.xaml"/>
+                <ResourceDictionary Source="Theme/BtnClipBoard.xaml"/>
+                <ResourceDictionary Source="Theme/CheckBoxFavorito.xaml"/>
+                <ResourceDictionary Source="Theme/TextBlockNum.xaml"/>
+                <ResourceDictionary Source="Theme/BtnDetails.xaml"/>
+                <ResourceDictionary Source="Theme/BtnFilter.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
+
+
+            <DataTemplate DataType="{x:Type UserViewModel:UserViewModel}">
+                <UserView:UserView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type UserViewModel:UserTableViewModel}">
+                <UserView:UserTableView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:UpdateUserViewModel}">
+                <view:UpdateUserView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:CustomersViewModel}">
+                <view:CustomersView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:CustomersTableViewModel}">
+                <view:CustomersTableView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:SellProductsViewModel}">
+                <view:SellProductsView/>
+            </DataTemplate>
+
+
+
+            <DataTemplate DataType="{x:Type ProviderViewModel:ProviderViewModel}">
+                <ProviderView:ProviderView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ProviderViewModel:ProviderTableViewModel}">
+                <ProviderView:ProviderTableView/>
+            </DataTemplate>
+
+
+            <DataTemplate DataType="{x:Type RestockViewModel:RestockViewModel}">
+                <RestockView:RestockView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type RestockViewModel:RestockTableViewModel}">
+                <RestockView:RestockTableView/>
+            </DataTemplate>
+
+
+
+            <DataTemplate DataType="{x:Type ProductViewModel:ProductTableViewModel}">
+                <ProductView:ProductTableView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ProductViewModel:ProductAdminViewModel}">
+                <ProductView:ProductAdminView/>
+            </DataTemplate>
+
+
+            <DataTemplate DataType="{x:Type SellsViewModel:SellsTableViewModel}">
+                <SellsView:SellsTableView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type SellsViewModel:StockHistoricoViewModel}">
+                <SellsView:StockHistoricoView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,671 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8965EA84-5620-4024-A9AF-54CD4CC94D76}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CoffeeDBIntegrada</RootNamespace>
+    <AssemblyName>CoffeeDBIntegrada</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\darck\Desktop\Proyecto de Alonso Hans Arce Centi\Instalador\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>40</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>LogoD.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>CC26162F078E3E5160D66495E1AC1B7C0A14C1D0</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>CoffeeDBIntegrada_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=6.0.4.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.6.0.4\lib\net452\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.Interfaces.6.0.0\lib\net452\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=6.0.0.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.System.Drawing.6.0.0\lib\net452\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Drawing.Common.5.0.2\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="MVVM\Windows\AdminRegister.xaml.cs">
+      <DependentUpon>AdminRegister.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProyectoDAMDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectoDAMDataSet.xsd</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Adminstration.cs" />
+    <Compile Include="Core\ConexionDB.cs" />
+    <Compile Include="Core\ObjectChange.cs" />
+    <Compile Include="Core\ObservableObject.cs" />
+    <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MVVM\View\CustomersTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\CustomersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Products\ProductAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Products\ProductTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Providers\ProviderTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Providers\ProviderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Restock\RestockTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Restock\RestockView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\SellProductsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Sells\SellsTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Sells\StockHistoricoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\UpdateUserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Users\UserTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Users\UserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Windows\AdminRegister.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Windows\PopUpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Windows\ResetPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\BorderDefault.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\BtnClipBoard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\BtnCloseMin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\BtnDefault.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\BtnDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\BtnFilter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\BtnTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\BtnToggleButtonDefault.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\BtnUpDown.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\CheckBoxFavorito.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\ComboBoxDefault.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\DataGridDefault.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\DataPickerDefault.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\LabelDefault.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\ListBoxCategory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\ListBoxProductTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\RadioButtonMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\TextArea.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\TextBlockDefault.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\TextBlockNum.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\TextBoxDefault.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MVVM\ViewModel\CustomersTableViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\CustomersViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\HomeViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\PopUpWindowViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Products\ProductAdminViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Products\ProductTableViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Providers\ProviderTableViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Providers\ProviderViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Restock\RestockTableViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Restock\RestockViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\SellProductsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Sells\SellsTableViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Sells\StockHistoricoViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\UpdateUserViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Users\UserTableViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Users\UserViewModel.cs" />
+    <Compile Include="MVVM\View\CustomersTableView.xaml.cs">
+      <DependentUpon>CustomersTableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\CustomersView.xaml.cs">
+      <DependentUpon>CustomersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Products\ProductAdminView.xaml.cs">
+      <DependentUpon>ProductAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Products\ProductTableView.xaml.cs">
+      <DependentUpon>ProductTableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Providers\ProviderTableView.xaml.cs">
+      <DependentUpon>ProviderTableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Providers\ProviderView.xaml.cs">
+      <DependentUpon>ProviderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Restock\RestockTableView.xaml.cs">
+      <DependentUpon>RestockTableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Restock\RestockView.xaml.cs">
+      <DependentUpon>RestockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\SellProductsView.xaml.cs">
+      <DependentUpon>SellProductsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Sells\SellsTableView.xaml.cs">
+      <DependentUpon>SellsTableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Sells\StockHistoricoView.xaml.cs">
+      <DependentUpon>StockHistoricoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\UpdateUserView.xaml.cs">
+      <DependentUpon>UpdateUserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Users\UserTableView.xaml.cs">
+      <DependentUpon>UserTableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Users\UserView.xaml.cs">
+      <DependentUpon>UserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Windows\PopUpWindow.xaml.cs">
+      <DependentUpon>PopUpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Windows\ResetPassword.xaml.cs">
+      <DependentUpon>ResetPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="CoffeeDBIntegrada_TemporaryKey.pfx" />
+    <None Include="DiagramaClases.cd" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ProyectoDAMDataSet.xsc">
+      <DependentUpon>ProyectoDAMDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProyectoDAMDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProyectoDAMDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ProyectoDAMDataSet.xss">
+      <DependentUpon>ProyectoDAMDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\Dark\coffeeD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\Dark\drinkD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\Dark\foodD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\Dark\fruitD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\Dark\milkshakeD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\Dark\pastrieD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\Dark\saladD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\Dark\sandwichD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\Dark\snackD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\Dark\starD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\Dark\tupperD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\JPG\coffee.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\JPG\drink.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\JPG\food.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\JPG\fruit.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\JPG\milkshake.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\JPG\pastrie.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\JPG\salad.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\JPG\sandwich.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\JPG\snack.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\JPG\tupper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\White\almacenW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\White\coffeeW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\White\drinkW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\White\foodW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\White\fruitW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\White\milkshakeW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\White\pastrieW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\White\saladW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\White\sandwichW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\White\snackW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\White\starFullW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\White\starW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodCategory\White\tupperW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\Dark\cartD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\Dark\customerD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\Dark\customerDFill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\Dark\foodD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\Dark\homeDFill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\Dark\labelD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\Dark\orderD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\Dark\providersD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\Dark\sellD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\Dark\settingD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\Dark\userD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\Dark\workerD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\White\cartW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\White\customerW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\White\customerWFill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\White\deliveryW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\White\foodW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\White\homeW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\White\homeWFill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\White\labelW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\White\orderW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\White\providersW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\White\sellW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\White\settingW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\White\userW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomeIcons\White\workerW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo\LogoD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo\LogoW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\Dark\closeD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\Dark\copyD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\Dark\couponD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\Dark\lockD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\Dark\maximizeD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\Dark\minimizeD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\Dark\refreshD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\Dark\searchD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\man.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\White\closeW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\White\copyW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\White\couponW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\White\labelW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\White\lockW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\White\maximizeW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\White\minimizeW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\White\refreshW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\White\searchW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Util\White\userW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\username.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="LogoW.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="LogoD.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

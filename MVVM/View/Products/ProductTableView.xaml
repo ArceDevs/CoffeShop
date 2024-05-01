@@ -1,0 +1,707 @@
+﻿<UserControl x:Class="CoffeeDBIntegrada.MVVM.View.Products.ProductTableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CoffeeDBIntegrada.MVVM.View.Products" 
+             xmlns:products="clr-namespace:CoffeeDBIntegrada.MVVM.ViewModel.Products"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000"
+             Background="Transparent"
+             Loaded="UserControl_Loaded">
+    <UserControl.DataContext>
+        <products:ProductTableViewModel/>
+    </UserControl.DataContext>
+    <!--#region CSS-->
+    <UserControl.Resources>
+        <!--#region TextBlockNum-->
+        <Style x:Key="TextBlockNum" TargetType="{x:Type TextBlock}">
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="TextTrimming" Value="None"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="OptionMarkFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="14,0,0,0" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--#endregion-->
+
+    </UserControl.Resources>
+    <!--#endregion-->
+    <Grid>
+        <!--#region MainGridDefinition-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.13*"/>
+            <RowDefinition Height="0.04*"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <!--#region ListBox-->
+        <Grid Grid.Column="1" Margin="0,0,10,0">
+            <ListBox Style="{DynamicResource ListBoxProductTable}"
+                     ItemContainerStyle="{DynamicResource ListBoxItemContainer}"
+                     x:Name="ProductsTable"
+                     d:ItemsSource="{d:SampleData ItemCount=5}" 
+                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                     ScrollViewer.VerticalScrollBarVisibility="Visible"
+                     SelectionChanged="ProductsTable_SelectionChanged"
+                     ToolTip="Selecciona un producto para modificarlo"
+                             ToolTipService.ShowDuration="2000"
+                             ToolTipService.HorizontalOffset="100">
+                <!--#region DataTemplate-->
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Grid Margin="3" MaxWidth="170">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="90"/>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!--#region Nombre - Stock-->
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Style="{DynamicResource TextBlockDefault }"
+                                               Text="{Binding NombreProductoDB}"
+                                               
+                                               MaxWidth="150"
+                                               TextWrapping="Wrap"
+                                               MaxHeight="80"
+                                               FontWeight="SemiBold"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontSize="20"
+                                               />
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <TextBlock Style="{DynamicResource TextBlockNum}" 
+                                               Text="Stock: "
+                                               FontSize="12"/>
+                                        <TextBlock Style="{DynamicResource TextBlockNum}" 
+                                               Text="{Binding StockDB}"
+                                               x:Name="Stock"
+                                               FontSize="12"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <!--#endregion-->
+
+                                <!--#region Img-->
+                                <Image Source="{Binding ImgDB}"
+                                       MaxWidth="100"
+                                           Grid.Column="0"
+                                           Grid.Row="1"
+                                       Margin="0 5 0 0"/>
+                                <!--#endregion-->
+
+                                <!--#region Precio-->
+                                <StackPanel Grid.Row="2"
+                                            Grid.ColumnSpan="1"
+                                            Orientation="Horizontal"
+                                            HorizontalAlignment="Center"
+                                            Height="20"
+                                            Margin="0 0 0 5">
+                                    <Label Style="{DynamicResource LabelDefault}"
+                                           Content="Precio Venta: "
+                                           Padding="0"
+                                           VerticalAlignment="Center"/>
+                                    <Label Style="{DynamicResource LabelDefault}"
+                                           Content="{Binding PrecioVentaDB}"
+                                           Padding="0"
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock Style="{DynamicResource TextBlockNum}" 
+                                               Text="€"
+                                               FontSize="15"
+                                               Grid.Row="1"
+                                               VerticalAlignment="Center"
+                                               Margin="5,0,0,0"/>
+                                </StackPanel>
+                                <!--#endregion-->
+                                <!--#region IVA-->
+                                <StackPanel Grid.Row="3"
+                                            Grid.ColumnSpan="1"
+                                            Orientation="Horizontal"
+                                            HorizontalAlignment="Center"
+                                            Height="20"
+                                            Margin="0 0 0 5">
+                                    <Label Style="{DynamicResource LabelDefault}"
+                                           Content="IVA: "
+                                           Padding="0"
+                                           VerticalAlignment="Center"/>
+                                    <Label Style="{DynamicResource LabelDefault}"
+                                           Content="{Binding IVADB}"
+                                           Padding="0"
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock Style="{DynamicResource TextBlockNum}" 
+                                               Text="%"
+                                               FontSize="15"
+                                               Grid.Row="1"
+                                               VerticalAlignment="Center"
+                                               Margin="5,0,0,0"/>
+                                </StackPanel>
+                                <!--#endregion-->
+                            </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+
+                </ListBox.ItemTemplate>
+                <!--#endregion-->
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" 
+                               
+                               Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Grid},AncestorLevel=1}, Path=ActualWidth}"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Menu-->
+        <Border Background="Transparent" 
+                Grid.Row="1" 
+                Grid.Column="1"
+                BorderBrush="White"
+                BorderThickness="2"
+                CornerRadius="10"
+                Padding="10"
+                Margin="0 5 10 0">
+
+            <DockPanel VerticalAlignment="Center">
+                <RadioButton Style="{StaticResource RadioButtonMenu}" 
+                             x:Name="Favorite"
+                             Click="Favorite_Click" 
+                             IsChecked="True"
+                             ToolTip="Favortitos"
+                             ToolTipService.ShowDuration="3000"
+                             ToolTipService.HorizontalOffset="50">
+                    <Image Source="\Images\FoodCategory\White\starW.png"/>
+                </RadioButton>
+                <RadioButton Style="{StaticResource RadioButtonMenu}" 
+                             x:Name="Coffee"
+                             Click="Coffee_Click"
+                             ToolTip="Cafeteria"
+                             ToolTipService.ShowDuration="3000"
+                             ToolTipService.HorizontalOffset="50">
+                    <Image Source="\Images\FoodCategory\White\coffeeW.png"/>
+                </RadioButton>
+                <RadioButton Style="{StaticResource RadioButtonMenu}" 
+                             x:Name="Pastrie"
+                             Click="Pastrie_Click"
+                             ToolTip="Bolleria"
+                             ToolTipService.ShowDuration="3000"
+                             ToolTipService.HorizontalOffset="50">
+                    <Image Source="\Images\FoodCategory\White\pastrieW.png"/>
+                </RadioButton>
+                <RadioButton Style="{StaticResource RadioButtonMenu}" 
+                             x:Name="Sandwich"
+                             Click="Sandwich_Click"
+                             ToolTip="Sandwich"
+                             ToolTipService.ShowDuration="3000"
+                             ToolTipService.HorizontalOffset="50">
+                    <Image Source="\Images\FoodCategory\White\sandwichW.png"/>
+                </RadioButton>
+                <RadioButton Style="{StaticResource RadioButtonMenu}" 
+                             x:Name="Tupper"
+                             Click="Tupper_Click"
+                             ToolTip="Preparedos"
+                             ToolTipService.ShowDuration="3000"
+                             ToolTipService.HorizontalOffset="50">
+                    <Image Source="\Images\FoodCategory\White\tupperW.png"/>
+                </RadioButton>
+                <RadioButton Style="{StaticResource RadioButtonMenu}" 
+                             x:Name="Snack"
+                             Click="Snack_Click"
+                             ToolTip="Snacks"
+                             ToolTipService.ShowDuration="3000"
+                             ToolTipService.HorizontalOffset="50">
+                    <Image Source="\Images\FoodCategory\White\snackW.png"/>
+                </RadioButton>
+                <RadioButton Style="{StaticResource RadioButtonMenu}" 
+                             x:Name="Fruit"
+                             Click="Fruit_Click"
+                             ToolTip="Frutas"
+                             ToolTipService.ShowDuration="3000"
+                             ToolTipService.HorizontalOffset="50">
+                    <Image Source="\Images\FoodCategory\White\fruitW.png"/>
+                </RadioButton>
+                <RadioButton Style="{StaticResource RadioButtonMenu}" 
+                             x:Name="Salad"
+                             Click="Salad_Click"
+                             ToolTip="Ensaladas"
+                             ToolTipService.ShowDuration="3000"
+                             ToolTipService.HorizontalOffset="50">
+                    <Image Source="\Images\FoodCategory\White\saladW.png"/>
+                </RadioButton>
+                <RadioButton Style="{StaticResource RadioButtonMenu}" 
+                             x:Name="Drink"
+                             Click="Drink_Click"
+                             ToolTip="Bebidas"
+                             ToolTipService.ShowDuration="3000"
+                             ToolTipService.HorizontalOffset="50">
+                    <Image Source="\Images\FoodCategory\White\drinkW.png"/>
+                </RadioButton>
+                <RadioButton Style="{StaticResource RadioButtonMenu}" 
+                             x:Name="Other"               
+                             Click="Other_Click"
+                             ToolTip="Otros"
+                             ToolTipService.ShowDuration="3000"
+                             ToolTipService.HorizontalOffset="50">
+                    <Image Source="\Images\FoodCategory\White\foodW.png"/>
+                </RadioButton>
+
+                <RadioButton Style="{StaticResource RadioButtonMenu}" 
+                             x:Name="All"
+                             HorizontalAlignment="Right"
+                             
+                             Click="All_Click"
+                             ToolTip="Todos"
+                             ToolTipService.ShowDuration="3000"
+                             ToolTipService.HorizontalOffset="50">
+                    <Image Source="\Images\FoodCategory\White\almacenW.png"/>
+                </RadioButton>
+
+            </DockPanel>
+        </Border>
+        <!--#endregion-->
+
+
+        <Border BorderBrush="White"
+                BorderThickness="2"
+                CornerRadius="10"
+                Padding="0 15 0 0"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Background="Transparent"
+                Margin="0 0 10 0">
+
+            <ScrollViewer Grid.Column="0"
+                    Grid.RowSpan="2"
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto"
+                      Margin="0 0 5 5">
+                <!--#region CRUD-->
+                <StackPanel Orientation="Vertical" Margin="0 0 0 0">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="Margin" Value="10 10 20 0"/>
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <DockPanel>
+                        <Button Style="{StaticResource BtnDefault}"
+                        MinWidth="200"
+                                HorizontalAlignment="Stretch"
+                        FontWeight="Bold"
+                        x:Name="Table"
+                        Content="Vista Tabla"
+                        Margin="20,0,0,10"
+                                Click="Table_Click"/>
+
+                        <Button Style="{StaticResource BtnDefault}"
+                            Grid.Column="1"
+                            MinWidth="70"
+                                HorizontalAlignment="Right"
+                                MaxWidth="70"
+                            FontWeight="Bold"
+                            x:Name="BtnLimpiar"
+                            Content="Limpiar"
+                                Margin="20,0,20,10"
+                                Click="BtnLimpiar_Click"/>
+                    </DockPanel>
+
+
+                    <!--#region Id y Clasificación-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Style="{StaticResource LabelDefault}"
+                               Content="Código Producto: "/>
+                        <TextBlock Style="{StaticResource TextBlockDefault}"
+                                   Grid.Column="1"
+                                   Text="{Binding ElementName=ProductsTable, Path=SelectedItem.IdProductoDB, UpdateSourceTrigger=PropertyChanged}"
+                                   FontSize="20"
+                                   FontWeight="SemiBold"
+                                   x:Name="Id"/>
+
+                        <Label Style="{StaticResource LabelDefault}"
+                           Content="Clasificación: "
+                           Grid.Column="3"
+                               ToolTip="A - Productos Básicos &#x0a;B - Productos Preparados &#x0a;C - Productos de Lujo"
+                             ToolTipService.ShowDuration="5000"
+                             ToolTipService.HorizontalOffset="150"/>
+                        <TextBlock Style="{StaticResource TextBlockDefault}"
+                                   x:Name="ListClass"
+                                   Grid.Column="4"
+                                   FontSize="20"
+                                   Text="{Binding ElementName=ProductsTable, Path=SelectedItem.ClasificacionDB, UpdateSourceTrigger=PropertyChanged}"
+                                   HorizontalAlignment="Center"
+                                   ToolTip="A - Productos Básicos &#x0a;B - Productos Preparados &#x0a;C - Productos de Lujo"
+                             ToolTipService.ShowDuration="5000"
+                             ToolTipService.HorizontalOffset="150"/>
+
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Nombre-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.6*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Style="{StaticResource LabelDefault}"
+                       Content="Nombre: "/>
+                        <TextBox Style="{StaticResource TextBoxDefautl}"
+                             Grid.Column="1"
+                             Text="{Binding ElementName=ProductsTable, Path=SelectedItem.NombreProductoDB}"
+                             x:Name="Name"
+                             MaxLength="30"
+                             MouseEnter="Name_MouseEnter"
+                             ToolTip="Campo Obligatorio"
+                             ToolTipService.ShowDuration="5000"
+                             ToolTipService.HorizontalOffset="100"/>
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Precios-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Style="{StaticResource LabelDefault}"
+                           Content="Coste:"/>
+                        <Label Style="{StaticResource LabelDefault}"
+                               Content="+"
+                               Grid.RowSpan="2"
+                               FontSize="50"
+                               HorizontalAlignment="Right"/>
+                        <DockPanel Grid.Row="1">
+                            <TextBox Style="{StaticResource TextBoxDefautl}"
+                                     Margin="5 0 0 0"
+                                     Text="{Binding ElementName=ProductsTable, Path=SelectedItem.PrecioCostoDB}"
+                                     MinWidth="70"
+                                     HorizontalContentAlignment="Center"
+                                     MaxLength="7"
+                                     x:Name="PriceBase"
+                                     TextChanged="PriceBase_TextChanged"
+                                     PreviewTextInput="PriceBase_PreviewTextInput"
+                                     CommandManager.Executed="PriceBase_PreviewExecuted"
+                                     MouseEnter="PriceBase_MouseEnter"
+                                     ToolTip="Campo Obligatorio"
+                             ToolTipService.ShowDuration="5000"
+                             ToolTipService.HorizontalOffset="100"/>
+                            <Label Style="{StaticResource LabelDefault}"
+                               Content="€ "
+                               HorizontalAlignment="Left"/>
+                            
+                        </DockPanel>
+
+                        <Label Style="{StaticResource LabelDefault}"
+                           Content="Beneficio:"
+                           Grid.Column="1"/>
+                        <Label Style="{StaticResource LabelDefault}"
+                               Content="="
+                               Grid.RowSpan="2"
+                               Grid.Column="1"
+                               FontSize="50"
+                               Margin="0 0 0 0"
+                               HorizontalAlignment="Right"/>
+                        <DockPanel Grid.Row="1" Grid.Column="1">
+                            <TextBox Style="{StaticResource TextBoxDefautl}"
+                                 Margin="5 0 0 0"
+                                 MinWidth="70"
+                                 HorizontalContentAlignment="Center"
+                                 MaxLength="7"
+                                 Text="{Binding ElementName=ProductsTable, Path=SelectedItem.PrecioBeneficioDB}"
+                                 x:Name="PriceProfit"
+                                     TextChanged="PriceProfit_TextChanged"
+                                     PreviewTextInput="PriceProfit_PreviewTextInput"
+                                     CommandManager.Executed="PriceProfit_PreviewExecuted"
+                                     MouseEnter="PriceProfit_MouseEnter"
+                                     ToolTip="Campo Obligatorio"
+                             ToolTipService.ShowDuration="5000"
+                             ToolTipService.HorizontalOffset="100"/>
+                            <Label Style="{StaticResource LabelDefault}"
+                               Content="€"
+                               HorizontalAlignment="Left"/>
+                        </DockPanel>
+
+                        <Label Style="{StaticResource LabelDefault}"
+                           Content="Precio Venta:"
+                           Grid.Column="2"
+                               ToolTip="Este precio se calcula con la suma del COSTE más el BENEFICIO aplicando el IVA correspondiente"
+                             ToolTipService.ShowDuration="10000"
+                             ToolTipService.HorizontalOffset="100"/>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2">
+                            <TextBlock Style="{StaticResource TextBlockDefault}"
+                                       Margin="20 0 0 0"
+                                       MinWidth="60"
+                                       VerticalAlignment="Top"
+                                       FontSize="20"
+                                       Text="{Binding ElementName=ProductsTable, Path=SelectedItem.PrecioVentaDB}"
+                                       x:Name="PriceSell"
+                                       ToolTip="Este precio se calcula con la suma del COSTE más el BENEFICIO aplicando el IVA correspondiente"
+                             ToolTipService.ShowDuration="10000"
+                             ToolTipService.HorizontalOffset="100"/>
+                            <TextBlock Style="{StaticResource TextBlockDefault}"
+                                       Margin="0 0 0 0"
+                                       MinWidth="60"
+                                       VerticalAlignment="Top"
+                                       FontSize="20"
+                                       Text="€"/>
+                        </StackPanel>
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Stock - IVA - Favorito-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Label Style="{StaticResource LabelDefault}"
+                           Content="Stock: "/>
+                        <DockPanel Grid.Row="1">
+                            <TextBox Style="{StaticResource TextBoxDefautl}"
+                                 Margin="5 0 0 0"
+                                 MinWidth="70"
+                                 HorizontalContentAlignment="Center"
+                                 MaxLength="7"
+                                 Text="{Binding ElementName=ProductsTable, Path=SelectedItem.StockDB}"
+                                 x:Name="Stock"
+                                     PreviewTextInput="Stock_PreviewTextInput"
+                                     CommandManager.Executed="Stock_Executed"/>
+                            <Label Style="{StaticResource LabelDefault}"
+                               Content="Uds"
+                               HorizontalAlignment="Left"/>
+                        </DockPanel>
+
+                        <Label Style="{StaticResource LabelDefault}"
+                               HorizontalAlignment="Left"
+                               Margin="0 0 40 0"
+                           Content="IVA:"
+                           Grid.Column="1"/>
+                        <Label Style="{StaticResource LabelDefault}"
+                               Content="▲"
+                               Grid.Column="1"
+                               FontSize="20"
+                               Margin="0 0 0 0"
+                               HorizontalAlignment="Center"/>
+                        <DockPanel Grid.Row="1" Grid.Column="1"
+                                   HorizontalAlignment="Left">
+                            <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainer}" 
+                                      Style="{StaticResource ComboBoxDefault}" 
+                                      MinWidth="50"
+                                      MaxWidth="50"
+                                      HorizontalContentAlignment="Center"
+                                      Grid.Column="4"
+                                      x:Name="ListIVA"
+                                      SelectedValue="{Binding ElementName=ProductsTable,Path=SelectedItem.IVADB}"
+                                      SelectedValuePath="IVADB"
+                                      SelectionChanged="ListIVA_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding IVADB}" FontSize="16"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <Label Style="{StaticResource LabelDefault}"
+                               Content="%"
+                               HorizontalAlignment="Left"/>
+                        </DockPanel>
+
+                        <Label Style="{StaticResource LabelDefault}"
+                               Content="Favoritos: "
+                               Grid.Column="2"/>
+                        <CheckBox Style="{DynamicResource CheckBoxFavorito}" 
+                                  Content="0"
+                                  Foreground="Transparent"
+                                  x:Name="CheckBoxFav"
+                                  Grid.Column="2"
+                                  Grid.Row="1"
+                                  IsChecked="{Binding ElementName=ProductsTable,Path=SelectedItem.FavoritoDB}"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Center"
+                                  Checked="CheckBoxFav_Checked"
+                                  Unchecked="CheckBoxFav_Unchecked">
+                        </CheckBox>
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Categoria-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.6*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Style="{StaticResource LabelDefault}"
+                           Content="Categoria: "/>
+                        <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainer}" 
+                              Style="{StaticResource ComboBoxDefault}" 
+                                  Grid.Column="1"
+                              Margin="0,10,25,0"
+                              Width="150"
+                              x:Name="ListCategory"
+                                  SelectedValue="{Binding ElementName=ProductsTable,Path=SelectedItem.CategoriaDB}"
+                                      SelectedValuePath="CategoriaDB"
+                                  SelectionChanged="ListCategory_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding CategoriaDB}" FontSize="16"/>
+                                    </StackPanel>
+                                </DataTemplate>
+
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Ingredientes y Descripcion-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Style="{StaticResource LabelDefault}"
+                           Content="Descripción: "/>
+                        <TextBox Style="{StaticResource TextArea}"
+                             Grid.Row="1"
+                                 Text="{Binding ElementName=ProductsTable, Path=SelectedItem.DescripcionDB}"
+                             x:Name="Description"
+                             Margin="0 0 20 0"/>
+
+
+                        <Label Style="{StaticResource LabelDefault}"
+                           Content="Ingredientes: "
+                           Grid.Column="1"/>
+                        <TextBox Style="{StaticResource TextArea}"
+                             Grid.Column="1"
+                                 Text="{Binding ElementName=ProductsTable, Path=SelectedItem.IngredientesDB}"
+                             Grid.Row="1"
+                             x:Name="Ingredients"
+                             Margin="0 0 0 0"/>
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region IMG-->
+                    <Grid Margin="0 20 20 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Style="{StaticResource BtnDefault}"
+                            VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                            MinWidth="150"
+                            FontWeight="Bold"
+                            x:Name="BtnImgChange"
+                            Content="Cambiar Imagen"
+                            Click="BtnImgChange_Click"
+                                ToolTip="Tamaño máximo: 350x350"
+                             ToolTipService.ShowDuration="10000"
+                             ToolTipService.HorizontalOffset="100"/>
+
+                        <Image x:Name="ImgCategory" MaxWidth="125" Grid.Column="1" HorizontalAlignment="Center"
+                               Source="pack://application:,,,/Images/FoodCategory/White/foodW.png"
+                               ToolTip="Tamaño máximo: 350x350"
+                             ToolTipService.ShowDuration="10000"
+                             ToolTipService.HorizontalOffset="100"/>
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Buttons-->
+                    <Grid Margin="0 30 30 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{StaticResource BtnDefault}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            MinWidth="120"
+                            FontWeight="Bold"
+                            x:Name="BtnAdd"
+                            Content="Añadir"
+                            Click="BtnAdd_Click"/>
+                        <Button Style="{StaticResource BtnDefault}"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            MinWidth="120"
+                            FontWeight="Bold"
+                            x:Name="BtnUpdate"
+                            Content="Actualizar"
+                            Margin="0,0,0,0"
+                                Click="BtnUpdate_Click"/>
+                    </Grid>
+
+                    <!--#endregion-->
+                </StackPanel>
+
+
+
+
+
+                <!--#endregion-->
+            </ScrollViewer>
+
+
+
+
+        </Border>
+
+    </Grid>
+</UserControl>

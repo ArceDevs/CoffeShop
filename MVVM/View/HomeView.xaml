@@ -1,0 +1,210 @@
+﻿<UserControl x:Class="CoffeeDBIntegrada.MVVM.View.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CoffeeDBIntegrada.MVVM.View" xmlns:viewModel="clr-namespace:CoffeeDBIntegrada.MVVM.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             >
+    <!--#region DataContext-->
+    <UserControl.DataContext>
+        <viewModel:MainViewModel/>
+    </UserControl.DataContext>
+    <!--#endregion-->
+    <!--#region HomeView-->
+    <Grid x:Name="click">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!--#region SeccionPrincipal-->
+        <Label Content="Inicio"
+               Grid.ColumnSpan="4"
+               Style="{DynamicResource LabelDefault}"
+               x:Name="Inicio"
+               FontSize="30"
+               HorizontalContentAlignment="Center"
+               Margin="0"/>
+
+        <!--#region Botones-->
+        <!--#region Ventas-->
+        <Grid Grid.Row="1"
+              Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Ventas"
+                   Style="{DynamicResource LabelDefault}"
+                   x:Name="SellsHome"
+                   FontSize="30"
+                   HorizontalContentAlignment="Center"
+                   Margin="0"/>
+            <Button Style="{StaticResource BtnDefault}"
+                    x:Name="BtnSellsHome"
+                    Grid.Row="1"
+                    Margin="20"
+                    MouseEnter="BtnSellsHome_MouseEnter"
+                    MouseLeave="BtnSellsHome_MouseLeave"
+                    Click="BtnSellsHome_Click"
+                    Command="{Binding UserViewCommand}">
+                <Image Source="/Images/HomeIcons/White/sellW.png"
+                       Margin="20"
+                       x:Name="ImgSellsHome"/>
+            </Button>
+        </Grid>
+        <!--#endregion-->
+        <!--#region Clientes-->
+        <Grid Grid.Row="1"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Clientes"
+                   Style="{DynamicResource LabelDefault}"
+                   x:Name="CustomersHome"
+                   FontSize="30"
+                   HorizontalContentAlignment="Center"
+                   Margin="0"/>
+            <Button Style="{StaticResource BtnDefault}"
+                    x:Name="BtnCustomersHome"
+                    Grid.Row="1"
+                    Margin="20"
+                    MouseEnter="BtnCustomersHome_MouseEnter"
+                    MouseLeave="BtnCustomersHome_MouseLeave"
+                    Click="BtnCustomersHome_Click">
+                <Image Source="/Images/HomeIcons/White/customerW.png"
+                       Margin="20"
+                       x:Name="ImgCustomersHome"/>
+            </Button>
+        </Grid>
+        <!--#endregion-->
+        <!--#region Products-->
+        <Grid Grid.Row="1"
+              Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Productos"
+                   Style="{DynamicResource LabelDefault}"
+                   x:Name="ProductsHome"
+                   FontSize="30"
+                   HorizontalContentAlignment="Center"
+                   Margin="0"/>
+            <Button Style="{StaticResource BtnDefault}"
+                    x:Name="BtnProductsHome"
+                    Grid.Row="1"
+                    Margin="20"
+                    MouseEnter="BtnProductsHome_MouseEnter"
+                    MouseLeave="BtnProductsHome_MouseLeave"
+                    Click="BtnProductsHome_Click">
+                <Image Source="/Images/HomeIcons/White/foodW.png"
+                       Margin="20"
+                       x:Name="ImgProductsHome"/>
+            </Button>
+        </Grid>
+        <!--#endregion-->
+        <!--#region Employees-->
+        <Grid Grid.Row="1"
+              Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Empleados"
+                   Style="{DynamicResource LabelDefault}"
+                   x:Name="EmployeesHome"
+                   FontSize="30"
+                   HorizontalContentAlignment="Center"
+                   Margin="0"/>
+            <Button Style="{StaticResource BtnDefault}"
+                    x:Name="BtnEmployeesHome"
+                    Grid.Row="1"
+                    Margin="20"
+                    MouseEnter="BtnEmployeesHome_MouseEnter"
+                    MouseLeave="BtnEmployeesHome_MouseLeave"
+                    Click="BtnEmployeesHome_Click">
+                <Image Source="/Images/HomeIcons/White/workerW.png"
+                       Margin="20"
+                       x:Name="ImgEmployeesHome"/>
+            </Button>
+        </Grid>
+        <!--#endregion-->
+        <!--#region Orders-->
+        <Grid Grid.Row="2"
+              Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Pedidos"
+                   Style="{DynamicResource LabelDefault}"
+                   x:Name="OrdersHome"
+                   FontSize="30"
+                   HorizontalContentAlignment="Center"
+                   Margin="0"/>
+            <Button Style="{StaticResource BtnDefault}"
+                    x:Name="BtnOrdersHome"
+                    Grid.Row="1"
+                    Margin="20"
+                    MouseEnter="BtnOrdersHome_MouseEnter"
+                    MouseLeave="BtnOrdersHome_MouseLeave"
+                    Click="BtnOrdersHome_Click">
+                <Image Source="/Images/HomeIcons/White/orderW.png"
+                       Margin="20"
+                       x:Name="ImgOrdersHome"/>
+            </Button>
+        </Grid>
+        <!--#endregion-->
+        <!--#region Providers-->
+        <Grid Grid.Row="2"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Proveedores"
+                   Style="{DynamicResource LabelDefault}"
+                   x:Name="ProvidersHome"
+                   FontSize="30"
+                   HorizontalContentAlignment="Center"
+                   Margin="0"/>
+            <Button Style="{StaticResource BtnDefault}"
+                    x:Name="BtnProvidersHome"
+                    Grid.Row="1"
+                    Margin="20"
+                    MouseEnter="BtnProvidersHome_MouseEnter"
+                    MouseLeave="BtnProvidersHome_MouseLeave"
+                    Click="BtnProvidersHome_Click">
+                <Image Source="/Images/HomeIcons/White/providersW.png"
+                       Margin="20"
+                       x:Name="ImgProvidersHome"/>
+            </Button>
+        </Grid>
+        <!--#endregion-->
+
+        <Border Width="150"
+                    Height="150"
+                    Background="#4eff91"
+                    Grid.Row="2"
+                    Grid.Column="2"/>
+        <Border Width="150"
+                    Height="150"
+                    Background="#ecff4e"
+                    Grid.Row="2"
+                    Grid.Column="3"/>
+        <!--#endregion-->
+        <!--#endregion-->
+    </Grid>
+    <!--#endregion-->
+</UserControl>

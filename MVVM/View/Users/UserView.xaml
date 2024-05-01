@@ -1,0 +1,550 @@
+﻿<UserControl x:Class="CoffeeDBIntegrada.MVVM.View.Users.UserView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CoffeeDBIntegrada.MVVM.View.Users" xmlns:viewmodel="clr-namespace:CoffeeDBIntegrada.MVVM.ViewModel.Users"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1000"
+             Background="Transparent"
+             Loaded="UserControl_Loaded">
+    <UserControl.DataContext>
+        <viewmodel:UserViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <!--#region PasswordBox-->
+        <SolidColorBrush x:Key="TextBox.Static.Border1" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border1" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border1" Color="#FF569DE5"/>
+        <Style x:Key="PasswordBoxStyle" TargetType="{x:Type PasswordBox}">
+            <Setter Property="PasswordChar" Value="●"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Padding" Value="5,2,5,0"/>
+            <Setter Property="MinHeight" Value="25"/>
+            <Setter Property="CaretBrush" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                        <Border CornerRadius="8" x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="white"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+        <!--#endregion-->
+    </UserControl.Resources>
+    <Grid x:Name="GridPrincipal">
+        <!--#region GridDefinition-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="1.6*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="3.5*"/>
+            <RowDefinition Height="3.5*"/>
+            <RowDefinition Height="3.5*"/>
+            <RowDefinition Height="3.5*"/>
+            <RowDefinition Height="2.8*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <!--#region Titulo y Back-->
+        <Grid Grid.ColumnSpan="4" Grid.Row="1" Margin="20,0,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.3*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Usuarios"
+                   Grid.Column="1"
+                   Style="{DynamicResource LabelDefault}"
+                   HorizontalContentAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="30"/>
+            <!--#region BtnBack-->
+            <Button Style="{StaticResource BtnDefault}"
+                    Grid.Column="0"
+                    x:Name="BtnBack"
+                    Content="Atrás"
+                    Margin="30,0,30,0"
+                    Click="BtnBack_Click"/>
+            <Button Style="{StaticResource BtnDefault}"
+                    Grid.Column="2"
+                    x:Name="BtnClear"
+                    Content="Limpiar"
+                    Margin="30,0,30,0"
+                    Click="BtnClear_Click"/>
+            <!--#endregion-->
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region ID-->
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2" Margin="20,0,0,0">
+            <!--#region Id-->
+            <Label Style="{DynamicResource LabelDefault}"
+                   Content="Código de Cliente"/>
+            <Border Style="{DynamicResource BorderDefault}"
+                    Margin="0,5,200,5"/>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 0">
+                <Button Style="{StaticResource BtnClipBoard}" 
+                        Width="35"
+                        MinHeight="40"
+                        BorderBrush="Transparent"
+                        Background="Transparent"
+                        BorderThickness="2"
+                        Margin="0,0,20,0"
+                        x:Name="BtnClipBoard"
+                        Cursor="Hand" Click="BtnClipBoard_Click"
+                        ToolTip="Copiar al Portapapeles"
+                        ToolTipService.HorizontalOffset="5"
+                        ToolTipService.ShowDuration="800">
+                    <Image Source="/Images/Util/White/copyW.png" Height="25"/>
+                </Button>
+                <TextBlock Style="{DynamicResource TextBlockDefault}" 
+                       FontSize="20"
+                       x:Name="Id"
+                           Text="{Binding Id, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[Id]}"/>
+
+            </StackPanel>
+            <!--#endregion-->
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region Nombre Y Apellidos-->
+        <Grid Grid.Column="1" Grid.Row="3" Margin="20,0,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--#region Nombre-->
+            <Label Style="{DynamicResource LabelDefault}" 
+                   Content="Nombre"/>
+            <Border Style="{DynamicResource BorderDefault}"
+                    Margin="0,30,90,0"/>
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1"
+                        Margin="0,0,30,0">
+                <TextBox Style="{StaticResource TextBoxDefautl}" 
+                     x:Name="Name"
+                     MaxLength="40"
+                     MouseEnter="Name_MouseEnter"
+                     Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[Name]}"/>
+                <Label Style="{DynamicResource LabelDefault}"              
+                   x:Name="ErrorNombre"
+                   Content="Nombre vacío"
+                   Foreground="#ff0033"
+                   Visibility="Collapsed"
+                   FontSize="15"/>
+            </StackPanel>
+            <!--#endregion-->
+            <!--#region Apellidos-->
+            <Label Grid.Column="1"
+                   Style="{DynamicResource LabelDefault}" 
+                   Content="Apellidos"
+                   HorizontalContentAlignment="Right"/>
+            <Border Style="{DynamicResource BorderDefault}"
+                    Grid.Column="1"
+                    Margin="90,30,0,0"/>
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1"
+                     Grid.Column="1">
+                <TextBox Style="{StaticResource TextBoxDefautl}" 
+                     x:Name="Surname"
+                     HorizontalContentAlignment="Right"
+                     Margin="30,0,0,0"
+                     MaxLength="40"
+                     MouseEnter="Surname_MouseEnter"
+                     Text="{Binding Surname, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[Surname]}"/>
+                <Label Style="{DynamicResource LabelDefault}"              
+                   x:Name="ErrorApellido"
+                   Content="Apellido vacío"
+                   Foreground="#ff0033" 
+                   Visibility="Collapsed"
+                   FontSize="15"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom"/>
+            </StackPanel>
+            <!--#endregion-->
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Dni Y Telefono-->
+        <Grid Grid.Column="1" Grid.Row="4" Margin="20,0,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--#region Dni-->
+            <Label Style="{DynamicResource LabelDefault}" 
+                   Content="DNI"/>
+            <Border Style="{DynamicResource BorderDefault}"
+                    Margin="0,30,90,0"/>
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1">
+                <TextBox Style="{StaticResource TextBoxDefautl}" 
+                     x:Name="DNI"
+                     Margin="0,0,30,0"
+                     MouseEnter="DNI_MouseEnter"
+                     MaxLength="9"
+                     Text="{Binding DNI, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[DNI]}"/>
+                <Label Style="{DynamicResource LabelDefault}"              
+                   x:Name="ErrorDni"
+                   Content="DNI vacío"
+                   Foreground="#ff0033" 
+                   Visibility="Collapsed"
+                   MinHeight="20"
+                   FontSize="15"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"/>
+            </StackPanel>
+            <!--#endregion-->
+            <!--#region Telefono-->
+            <Label Grid.Column="1"
+                   Style="{DynamicResource LabelDefault}" 
+                   Content="Teléfono"
+                   HorizontalContentAlignment="Right"/>
+            <Border Style="{DynamicResource BorderDefault}"
+                    Grid.Column="1"
+                    Margin="90,30,0,0"/>
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1"
+                        Grid.Column="1">
+                <TextBox Style="{StaticResource TextBoxDefautl}" 
+                     x:Name="Phone"
+                     HorizontalContentAlignment="Right"
+                     Margin="30,0,0,0"
+                     MouseEnter="Phone_MouseEnter"
+                     PreviewTextInput="Phone_PreviewTextInput"
+                     MaxLength="9"
+                     CommandManager.PreviewExecuted="Phone_PreviewExecuted"
+                     Text="{Binding Phone, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[Phone]}"/>
+                <Label Style="{DynamicResource LabelDefault}"              
+                   x:Name="ErrorTelefono"
+                   Content="Teléfono vacío"
+                   Foreground="#ff0033" 
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Visibility="Collapsed"
+                   MinHeight="20"
+                   FontSize="15"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom"/>
+            </StackPanel>
+            <!--#endregion-->
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Fecha de Nacimiento Y Privilegio-->
+        <Grid Grid.Column="1" Grid.Row="5" Margin="20,0,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--#region Fecha Nacimiento-->
+            <StackPanel Orientation="Horizontal">
+                <Label Style="{DynamicResource LabelDefault}" 
+                   Content="Fecha Nacimiento"/>
+                <Label Style="{DynamicResource LabelDefault}" 
+                       Content="(opcional)"
+                       FontSize="10"
+                       Margin="0 0 0 -5"/>
+            </StackPanel>
+            <Border Style="{DynamicResource BorderDefault}"
+                    Margin="0,30,30,0"/>
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1">
+                <TextBox Style="{StaticResource TextBoxDefautl}" 
+                     x:Name="DoB"
+                     Margin="0,0,20,0"
+                     PreviewTextInput="DoB_PreviewTextInput"
+                     CommandManager.PreviewExecuted="DoB_PreviewExecuted"
+                     MaxLength="10"
+                     Text="{Binding DoB, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[DoB]}"/>
+                <Label Style="{DynamicResource LabelDefault}"              
+                   x:Name="ErrorFecha"
+                   Grid.Row="1"
+                   Content="Fecha vacía"
+                   Foreground="#ff0033" 
+                   Visibility="Collapsed"
+                   MinHeight="20"
+                   FontSize="15"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"/>
+            </StackPanel>
+            
+            <!--#endregion-->
+            <!--#region Privilegio-->
+            <Label Style="{DynamicResource LabelDefault}" 
+                   Grid.Column="1"
+                   Content="Privilegio"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,0,0"/>
+            <Border Style="{DynamicResource BorderDefault}"
+                    Grid.Column="1"
+                    Margin="60,30,0,0"/>
+            <ComboBox Style="{StaticResource ComboBoxDefault}"
+                      ItemContainerStyle="{DynamicResource ComboBoxItemContainer}"
+                      Grid.Row="1"
+                      Grid.Column="1"
+                      Margin="0,5,0,0"
+                      x:Name="Priviledge"
+                      PreviewTextInput="Priviledge_PreviewTextInput"
+                      SelectionChanged="Priviledge_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Privilegio}"/>
+                        </StackPanel>
+                    </DataTemplate>
+
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <!--#endregion-->
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Email-->
+        <Grid Grid.Column="1" Grid.Row="6" Margin="20,0,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Style="{DynamicResource LabelDefault}" 
+                   Content="Email"/>
+            <Border Style="{DynamicResource BorderDefault}"
+                    Margin="0,30,250,0"/>
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1">
+                <TextBox Style="{StaticResource TextBoxDefautl}" 
+                     x:Name="Email"
+                     MouseEnter="Email_MouseEnter"
+                     MaxLength="100"
+                     Text="{Binding Email, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[Email]}"/>
+                <Label Style="{DynamicResource LabelDefault}"              
+                   x:Name="ErrorCorreo"
+                   Content="Email vacío"
+                   Foreground="#ff0033" 
+                   Grid.Row="1"
+                   Visibility="Collapsed"
+                   MinHeight="20"
+                   FontSize="15"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"/>
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Username-->
+        <Grid Grid.Column="2" Grid.Row="5" Margin="20,0,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Style="{DynamicResource LabelDefault}" 
+                   Content="Apodo"
+                   HorizontalAlignment="Right"/>
+            <Border Style="{DynamicResource BorderDefault}"
+                    Margin="200,30,0,0"/>
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1">
+                <TextBox Style="{StaticResource TextBoxDefautl}" 
+                     x:Name="Username"
+                     HorizontalContentAlignment="Right"
+                     MouseEnter="Username_MouseEnter"
+                     MaxLength="40"
+                     Text="{Binding Username, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[Username]}"/>
+                <Label Style="{DynamicResource LabelDefault}"              
+                   x:Name="ErrorApodo"
+                   Content="Apodo vacío"
+                   Foreground="#ff0033" 
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Visibility="Collapsed"
+                   MinHeight="20"
+                   FontSize="15"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom"/>
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Contraseña-->
+        <Grid Grid.Column="2" Grid.Row="6" Margin="20,0,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Style="{DynamicResource LabelDefault}" 
+                       Content="(Esta contraseña es provisional, se reiniciara con el primer inicio de sesión)"
+                       FontSize="10"
+                       Margin="0 0 0 -5"/>
+                <Label Style="{DynamicResource LabelDefault}" 
+                   Content="Contraseña"/>
+
+            </StackPanel>
+            <Border Style="{DynamicResource BorderDefault}"
+                    Margin="0,30,0,0"/>
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1">
+                <TextBox Style="{StaticResource TextBoxDefautl}" 
+                     x:Name="Password"
+                     HorizontalContentAlignment="Right"
+                     MaxLength="100"
+                     Text="{Binding Password, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[Password]}"/>
+                <Label Style="{DynamicResource LabelDefault}"              
+                   x:Name="ErrorContrasena"
+                   Content="Contraseña vacía"
+                   Foreground="#ff0033" 
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Visibility="Collapsed"
+                   MinHeight="20"
+                   FontSize="15"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom"/>
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Image-->
+        <Grid Grid.Column="2" Grid.RowSpan="3" Grid.Row="2" Margin="0 0 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="1"
+                   Foreground="White"
+                   FontSize="15"
+                   Content="Imagen"
+                   FontWeight="Light"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,20,0"/>
+            <Border Grid.Column="1"
+                    Background="White"
+                    Height="1"
+                    Width="55"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="0,28,20,0"/>
+
+
+
+
+            <Button Style="{StaticResource BtnDefault}"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold"
+                    x:Name="BtnImgChange"
+                    Content="Cambiar Imagen"
+                    Margin="20,0,20,0"
+                    Click="BtnImgChange_Click"/>
+            <Image
+                   x:Name="pfp"
+                   Margin="0"
+                   Source="/Images/Util/man.jpg"/>
+
+
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Buttons Username-->
+        <Button Style="{StaticResource BtnDefault}"
+                    Grid.Column="1"
+                    Grid.Row="7"
+                    Height="40"
+                    Width="180"
+                    x:Name="BtnAdd"
+                    Click="Add_Click"
+                    Content="Añadir"
+                ToolTip="No puede haber ningún campo marcando un error para funcionar"
+                             ToolTipService.ShowDuration="10000"
+                             ToolTipService.HorizontalOffset="100"/>
+
+        <Label Style="{DynamicResource LabelDefault}" 
+               Grid.Column="1"
+               x:Name="mensaje"
+                    Grid.Row="7"
+               Grid.RowSpan="2"
+               Grid.ColumnSpan="2"
+               Visibility="Visible"
+               MinHeight="20"
+               FontSize="15"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Bottom"/>
+        
+        <Button Style="{StaticResource BtnDefault}"
+                    Grid.Column="2"
+                    Grid.Row="7"
+                    Height="40"
+                    Width="180"
+                    x:Name="BtnUpdate"
+                    Content="Actualizar"
+                    Click="Update_Click"
+                 ToolTip="Los campos deben cumplir los requisitos para poder actualizar"
+                             ToolTipService.ShowDuration="10000"
+                             ToolTipService.HorizontalOffset="100"/>
+        <!--#endregion-->
+    </Grid>
+</UserControl>
+

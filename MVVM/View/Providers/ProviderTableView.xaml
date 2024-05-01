@@ -1,0 +1,253 @@
+﻿<UserControl x:Class="CoffeeDBIntegrada.MVVM.View.Providers.ProviderTableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CoffeeDBIntegrada.MVVM.View.Providers"
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1280"
+             Background="Transparent"
+             Loaded="UserControl_Loaded">
+    <Grid x:Name="GridPrincipal">
+        <!--#region GridDefinition-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.02*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.02*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+        
+        <!--#region Titulo , Ver y Filtros-->
+        <Grid Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--#region Titulo-->
+            <Label Content="Proveedores"
+                   Style="{DynamicResource LabelDefault}"
+
+                   Grid.Column="1"
+                   FontSize="30"
+                   HorizontalContentAlignment="Center"/>
+            <!--#endregion-->
+            <!--#region Filtros-->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <!--#region FilterText-->
+                    <TextBox Style="{StaticResource TextBoxDefautl}" 
+                             x:Name="FilterText"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             HorizontalContentAlignment="Right"
+                             Width="150"
+                             PreviewTextInput="FilterText_PreviewTextInput"
+                             CommandManager.PreviewExecuted="FilterText_PreviewExecuted"/>
+                    <Grid>
+                        <Label Style="{DynamicResource LabelDefault}"
+                           Content="Filtrar"
+                           Margin="20,0,10,0"/>
+                        <Border Style="{DynamicResource BorderDefault}"
+                            Margin="20,30,5,0"/>
+                    </Grid>
+
+                    <!--#endregion-->
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <!--#region FilterBox-->
+                    <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainer}" 
+                              Style="{StaticResource ComboBoxDefault}" 
+                              Margin="0,10,25,0"
+                              Width="150"
+                              x:Name="FilterBox"
+                              SelectionChanged="FilterBox_SelectionChanged"
+                              PreviewTextInput="FilterBox_PreviewTextInput">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding HeaderTitle}" FontSize="16"/>
+                                </StackPanel>
+                            </DataTemplate>
+
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <!--#endregion-->
+                    <!--#region BtnSearch-->
+                    <Grid HorizontalAlignment="Center" Width="40" Height="40" Margin="0,0,15,0" VerticalAlignment="Top">
+
+                        <Button Style="{DynamicResource BtnFilter}" 
+                                Width="35"
+                                x:Name="Search"
+                                Margin="0,0,0,0"
+                                BorderBrush="Transparent"
+                                Background="Transparent"
+                                BorderThickness="2"
+                                Cursor="Hand"
+                                IsDefault="True"
+                                Click="Search_Click">
+                            <Image Source="/Images/Util/White/searchW.png" Width="25" Margin="0,0,0,0"/>
+                        </Button>
+                    </Grid>
+                    <!--#endregion-->
+                </StackPanel>
+
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region BtnAñadir-->
+            <Button Style="{StaticResource BtnDefault}"
+                    Grid.Column="0"
+                    VerticalAlignment="Top"
+                    MinWidth="100"
+                    HorizontalAlignment="Left"
+                    Margin="50 20 0 0"
+                    x:Name="BtnCustomerAdd"
+                    Content="Añadir"
+                    Click="PopUpMenu_Click"/>
+            <!--#endregion-->
+
+            <!--#region Refresh-->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20,0,0,0">
+                <TextBlock Style="{StaticResource TextBlockDefault}"
+                           Text="Recargar Proveedores:"
+                           FontSize="15"
+                           FontWeight="Bold"/>
+                <Button Style="{DynamicResource BtnFilter}" 
+                                Width="35"
+                                x:Name="Refresh"
+                                Margin="20,0,0,0"
+                                BorderBrush="Transparent"
+                                Background="Transparent"
+                                BorderThickness="2"
+                                Cursor="Hand"
+                                IsDefault="True"
+                                Click="Refresh_Click">
+                    <Image Source="/Images/Util/White/refreshW.png" Width="25" Margin="0,0,0,0"/>
+                </Button>
+            </StackPanel>
+
+            <!--#endregion-->
+
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Export-->
+        <Button Style="{StaticResource BtnDefault}"              
+                    Margin="0 0 20 0"
+                    MinWidth="200"
+                    MaxWidth="200"
+                HorizontalAlignment="Right"
+                    Grid.Column="2"
+                    Grid.Row="6"
+                    x:Name="Export"
+                    Content="Exportar"
+                    Click="Export_Click"
+                ToolTip="Exportar la tabla a formato Excel"
+                ToolTipService.ShowDuration="8000"
+                ToolTipService.HorizontalOffset="100"/>
+        <!--#endregion-->
+
+        <!--#region Nº Registros-->
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Left"
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    Margin="20 0 0 0">
+            <TextBlock Style="{StaticResource TextBlockDefault}"
+                           Text="Nº Registros:"
+                           FontSize="15"
+                           FontWeight="Bold"
+                       Margin="0 0 20 0"/>
+            <TextBlock Style="{StaticResource TextBlockDefault}"
+                           x:Name="Registros"
+                           FontSize="15"
+                           FontWeight="Bold"/>
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region Tabla-->
+        <Grid Grid.Column="1" Grid.ColumnSpan="2"
+              Grid.Row="2" Grid.RowSpan="4"
+              Margin="10,20,10,20">
+            <DataGrid CellStyle="{DynamicResource DataGridCell}" 
+                      RowStyle="{DynamicResource DataGridRow}" 
+                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeader}" 
+                      Style="{DynamicResource DataGridDefault}"
+                      x:Name="ProvidersTable"
+                      AutoGenerateColumns="False"
+                      FontSize="15"
+                      Background="Transparent"
+                      PreviewMouseRightButtonDown="ProvidersTable_PreviewMouseRightButtonDown"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                      MouseRightButtonUp="ProvidersTable_MouseRightButtonUp"
+                      SelectionUnit="Cell"
+                      Foreground="White"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="True"
+                      RowBackground="#22202F"
+                      IsReadOnly="True"
+                      PreviewMouseDoubleClick="ProvidersTable_PreviewMouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Modificar" MinWidth="60" Width="0.7*" MaxWidth="75">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <Button Content="MOD"
+                                            Style="{StaticResource BtnTable}"
+                                            x:Name="BtnUpdate"
+                                            Margin="5"
+                                            CommandParameter="{Binding IdProveedor}"
+                                            Click="BtnUpdate_Click"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn x:Name="IdProveedor" Header="Nº" Width="auto" Binding="{Binding IdProveedor}" MaxWidth="40"/>
+                    <DataGridTextColumn x:Name="CIF" Header="CIF" Width="auto" Binding="{Binding CIF}" MaxWidth="90"/>
+                    <DataGridTextColumn x:Name="Nombre" Header="Nombre" Width="auto" Binding="{Binding NombreProveedor}" MaxWidth="150"/>
+                    <DataGridTextColumn x:Name="Telefono" Header="Fijo" Width="auto" Binding="{Binding Telefono}" MaxWidth="80" />
+                    <DataGridTextColumn x:Name="Telefono2" Header="Móvil " Width="auto" Binding="{Binding Telefono2}" MaxWidth="80"/>
+                    <DataGridTextColumn x:Name="Email" Header="Email" Width="*" Binding="{Binding Email}"/>
+                    <DataGridTextColumn x:Name="CodPostal" Header="CodPostal" Width="auto" Binding="{Binding CodPostal}" MaxWidth="80"/>
+                    <DataGridTextColumn x:Name="FechaModificacion" Header="Fecha Modificacion" Width="*" Binding="{Binding FechaModificacion}" Visibility="Collapsed"/>
+                    <DataGridTextColumn x:Name="FechaCreacion" Header="Fecha Creacion" Width="*" Binding="{Binding FechaCreacion}"/>
+                    <DataGridTemplateColumn Header="Eliminar" MinWidth="50" Width="auto" MaxWidth="65">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <Button Content="DEL"
+                                            Style="{StaticResource BtnTable}"
+                                            x:Name="BtnDelete"
+                                            Margin="5"
+                                            CommandParameter="{Binding IdProveedor}"
+                                            Click="BtnDelete_Click"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <!--#endregion-->
+
+
+    </Grid>
+</UserControl>

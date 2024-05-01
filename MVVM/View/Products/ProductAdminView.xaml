@@ -1,0 +1,296 @@
+﻿<UserControl x:Class="CoffeeDBIntegrada.MVVM.View.Products.ProductAdminView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CoffeeDBIntegrada.MVVM.View.Products"
+             mc:Ignorable="d" 
+             d:DesignHeight="960" d:DesignWidth="1280"
+             Background="Transparent"
+             Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <!--#region Filter-->
+        <SolidColorBrush x:Key="Button.Static.Background1" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border1" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background1" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border1" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background1" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border1" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background1" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border1" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground1" Color="#FF838383"/>
+        <Style x:Key="BtnFilter" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual1}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background1}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border1}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="8" x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="transparent"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="transparent"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--#endregion-->
+
+    </UserControl.Resources>
+    <Grid x:Name="GridPrincipal">
+        <!--#region GridDefinition-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.02*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.02*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+        
+        <!--#region Titulo , Ver y Filtros-->
+        <Grid Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--#region BtnBack-->
+            <Button Style="{StaticResource BtnDefault}"
+                    Grid.Column="0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="50 20 0 0"
+                    MinWidth="100"
+                    x:Name="BtnBack"
+                    Content="Atrás"
+                    Click="BtnBack_Click"/>
+            <!--#endregion-->
+            <!--#region Titulo-->
+            <Label Content="Productos"
+                   Style="{DynamicResource LabelDefault}"
+                   Grid.Column="1"
+                   FontSize="30"
+                   HorizontalContentAlignment="Center"/>
+            <!--#endregion-->
+            <!--#region Filtros-->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <!--#region FilterText-->
+                    <TextBox Style="{StaticResource TextBoxDefautl}" 
+                             x:Name="FilterText"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             HorizontalContentAlignment="Right"
+                             Width="150"
+                             PreviewTextInput="FilterText_PreviewTextInput"
+                             CommandManager.PreviewExecuted="FilterText_PreviewExecuted"/>
+                    <Grid>
+                        <Label Style="{DynamicResource LabelDefault}"
+                           Content="Filtrar"
+                           Margin="20,0,10,0"/>
+                        <Border Style="{DynamicResource BorderDefault}"
+                            Margin="20,30,5,0"/>
+                    </Grid>
+
+                    <!--#endregion-->
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <!--#region FilterBox-->
+                    <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainer}" 
+                              Style="{StaticResource ComboBoxDefault}" 
+                              Margin="0,10,25,0"
+                              Width="150"
+                              x:Name="FilterBox"
+                              SelectionChanged="FilterBox_SelectionChanged"
+                              PreviewTextInput="FilterBox_PreviewTextInput">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding HeaderTitle}" FontSize="16"/>
+                                </StackPanel>
+                            </DataTemplate>
+
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <!--#endregion-->
+                    <!--#region BtnSearch-->
+                    <Grid HorizontalAlignment="Center" Width="40" Height="40" Margin="0,0,15,0" VerticalAlignment="Top">
+
+                        <Button Style="{DynamicResource BtnFilter}" 
+                                Width="35"
+                                x:Name="Search"
+                                Margin="0,0,0,0"
+                                BorderBrush="Transparent"
+                                Background="Transparent"
+                                BorderThickness="2"
+                                Cursor="Hand"
+                                IsDefault="True"
+                                Click="Search_Click">
+                            <Image Source="/Images/Util/White/searchW.png" Width="25" Margin="0,0,0,0"/>
+                        </Button>
+                    </Grid>
+                    <!--#endregion-->
+                </StackPanel>
+
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Refresh-->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20,0,0,0">
+                <TextBlock Style="{StaticResource TextBlockDefault}"
+                           Text="Recargar Productos:"
+                           FontSize="15"
+                           FontWeight="Bold"/>
+                <Button Style="{DynamicResource BtnFilter}" 
+                                Width="35"
+                                x:Name="Refresh"
+                                Margin="20,0,0,0"
+                                BorderBrush="Transparent"
+                                Background="Transparent"
+                                BorderThickness="2"
+                                Cursor="Hand"
+                                IsDefault="True"
+                                Click="Refresh_Click">
+                    <Image Source="/Images/Util/White/refreshW.png" Width="25" Margin="0,0,0,0"/>
+                </Button>
+            </StackPanel>
+
+            <!--#endregion-->
+
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Export-->
+        <Button Style="{StaticResource BtnDefault}"              
+                    Margin="0 0 20 0"
+                    MinWidth="200"
+                    MaxWidth="200"
+                HorizontalAlignment="Right"
+                    Grid.Column="2"
+                    Grid.Row="6"
+                    x:Name="Export"
+                    Content="Exportar"
+                    Click="Export_Click"
+                ToolTip="Exportar la tabla a formato Excel"
+                ToolTipService.ShowDuration="8000"
+                ToolTipService.HorizontalOffset="100"/>
+        <!--#endregion-->
+
+        <!--#region Nº Registros-->
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Left"
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    Margin="20 0 0 0">
+            <TextBlock Style="{StaticResource TextBlockDefault}"
+                           Text="Nº Registros:"
+                           FontSize="15"
+                           FontWeight="Bold"
+                       Margin="0 0 20 0"/>
+            <TextBlock Style="{StaticResource TextBlockDefault}"
+                           x:Name="Registros"
+                           FontSize="15"
+                           FontWeight="Bold"/>
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region Tabla-->
+        <Grid Grid.Column="1" Grid.ColumnSpan="2"
+              Grid.Row="2" Grid.RowSpan="4"
+              Margin="10,20,10,20">
+            <DataGrid CellStyle="{DynamicResource DataGridCell}" 
+                      RowStyle="{DynamicResource DataGridRow}" 
+                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeader}" 
+                      Style="{DynamicResource DataGridDefault}"
+                      x:Name="ProductsTable"
+                      AutoGenerateColumns="False"
+                      FontSize="15"
+                      Background="Transparent"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                      PreviewMouseRightButtonDown="ProductsTable_PreviewMouseRightButtonDown"
+                      MouseRightButtonUp="ProductsTable_MouseRightButtonUp"
+                      SelectionUnit="Cell"
+                      Foreground="White"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="True"
+                      RowBackground="#22202F"
+                      IsReadOnly="True"
+                      PreviewMouseDoubleClick="ProductsTable_PreviewMouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Modificar" MinWidth="65" Width="auto" MaxWidth="75" Visibility="Collapsed">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <Button Content="MOD"
+                                            Style="{StaticResource BtnTable}"
+                                            x:Name="BtnUpdate"
+                                            Margin="5"
+                                            CommandParameter="{Binding IdProducto}"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn x:Name="IdProducto" Header="Nº" Width="auto" Binding="{Binding IdProducto}" MinWidth="40"/>
+                    <DataGridTextColumn x:Name="NombreProducto" Header="Nombre" Width="auto" Binding="{Binding NombreProducto}" MaxWidth="150" MinWidth="80"/>
+                    <DataGridTextColumn x:Name="PrecioCosto" Header="Costo" Width="auto" Binding="{Binding PrecioCosto}" MaxWidth="65" MinWidth="60"/>
+                    <DataGridTextColumn x:Name="PrecioBeneficio" Header="Beneficio" Width="auto" Binding="{Binding PrecioBeneficio}" MaxWidth="75" MinWidth="70"/>
+                    <DataGridTextColumn x:Name="PrecioVenta" Header="Venta" Width="auto" Binding="{Binding PrecioVenta}" MinWidth="60" MaxWidth="75"/>
+                    <DataGridTextColumn x:Name="IVA" Header="IVA" Width="auto" Binding="{Binding IVA}" MinWidth="40" MaxWidth="40"/>
+                    <DataGridTextColumn x:Name="Categoria" Header="Categoria" Width="auto" Binding="{Binding Categoria}" MaxWidth="100"/>
+                    <DataGridTextColumn x:Name="Stock" Header="Stock" Width="auto" Binding="{Binding Stock}" MaxWidth="100"/>
+                    <DataGridTextColumn x:Name="FechaModificacion" Header="Fecha Modificacion" Width="auto" Binding="{Binding FechaModificacion}" MaxWidth="250" MinWidth="80"/>
+                    <DataGridTextColumn x:Name="FechaCreacion" Header="Fecha Creacion" Width="*" Binding="{Binding FechaCreacion}" MinWidth="80"/>
+                    <DataGridTemplateColumn Header="Eliminar" MinWidth="65" Width="auto" MaxWidth="65">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <Button Content="DEL"
+                                            Style="{StaticResource BtnTable}"
+                                            x:Name="BtnDelete"
+                                            Margin="5"
+                                            CommandParameter="{Binding IdProducto}"
+                                            Click="BtnDelete_Click"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <!--#endregion-->
+
+
+    </Grid>
+</UserControl>
+

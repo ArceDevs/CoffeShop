@@ -1,0 +1,410 @@
+﻿<UserControl x:Class="CoffeeDBIntegrada.MVVM.View.Restock.RestockTableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CoffeeDBIntegrada.MVVM.View.Restock" xmlns:restock="clr-namespace:CoffeeDBIntegrada.MVVM.ViewModel.Restock"
+             mc:Ignorable="d" 
+             d:DesignHeight="960" d:DesignWidth="1280"
+             Background="Transparent"
+             Loaded="UserControl_Loaded">
+    <UserControl.DataContext>
+        <restock:RestockTableViewModel/>
+    </UserControl.DataContext>
+    <Grid x:Name="GridPrincipal">
+        <!--#region GridDefinition-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.02*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.02*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <!--#region Titulo , Ver y Filtros-->
+        <Grid Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--#region Titulo-->
+            <Label Content="Pedidos"
+                   Style="{DynamicResource LabelDefault}"
+                   Grid.Column="1"
+                   Margin="0 40 0 0"
+                   HorizontalAlignment="Left"
+                   FontSize="30"/>
+            <!--#endregion-->
+            <!--#region Filtros-->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <!--#region FilterText-->
+                    <TextBox Style="{StaticResource TextBoxDefautl}" 
+                             x:Name="FilterText"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             HorizontalContentAlignment="Right"
+                             Width="150"
+                             PreviewTextInput="FilterText_PreviewTextInput"
+                             CommandManager.PreviewExecuted="FilterText_PreviewExecuted"/>
+                    <Grid>
+                        <Label Style="{DynamicResource LabelDefault}"
+                           Content="Filtrar"
+                           Margin="20,0,10,0"/>
+                        <Border Style="{DynamicResource BorderDefault}"
+                            Margin="20,30,5,0"/>
+                    </Grid>
+
+                    <!--#endregion-->
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <!--#region FilterBox-->
+                    <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainer}" 
+                              Style="{StaticResource ComboBoxDefault}" 
+                              Margin="0,10,25,0"
+                              Width="150"
+                              x:Name="FilterBox"
+                              SelectionChanged="FilterBox_SelectionChanged"
+                              PreviewTextInput="FilterBox_PreviewTextInput">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding HeaderTitle}" FontSize="16"/>
+                                </StackPanel>
+                            </DataTemplate>
+
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <!--#endregion-->
+                    <!--#region BtnSearch-->
+                    <Grid HorizontalAlignment="Center" Width="40" Height="40" Margin="0,0,15,0" VerticalAlignment="Top">
+
+                        <Button Style="{DynamicResource BtnFilter}" 
+                                Width="35"
+                                x:Name="Search"
+                                
+                                Margin="0,0,0,0"
+                                BorderBrush="Transparent"
+                                Background="Transparent"
+                                BorderThickness="2"
+                                Cursor="Hand"
+                                IsDefault="True"
+                                Click="Search_Click">
+                            <Image Source="/Images/Util/White/searchW.png" Width="25" Margin="0,0,0,0"/>
+                        </Button>
+                    </Grid>
+                    <!--#endregion-->
+                </StackPanel>
+
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region BtnAñadir-->
+            <Button Style="{StaticResource BtnDefault}"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    MinWidth="100"
+                    HorizontalAlignment="Center"
+                    Margin="0 0 100 0"
+                    x:Name="BtnCustomerAdd"
+                    Content="Añadir"
+                    Click="PopUpMenu_Click"/>
+            <!--#endregion-->
+
+            <!--#region Refresh-->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20,0,0,0">
+                <TextBlock Style="{StaticResource TextBlockDefault}"
+                           Text="Recargar Pedidos:"
+                           FontSize="15"
+                           FontWeight="Bold"/>
+                <Button Style="{DynamicResource BtnFilter}" 
+                                Width="35"
+                                x:Name="Refresh"
+                                Margin="20,0,0,0"
+                                BorderBrush="Transparent"
+                                Background="Transparent"
+                                BorderThickness="2"
+                                Cursor="Hand"
+                                IsDefault="True"
+                                Click="Refresh_Click">
+                    <Image Source="/Images/Util/White/refreshW.png" Width="25" Margin="0,0,0,0"/>
+                </Button>
+            </StackPanel>
+
+            <!--#endregion-->
+        </Grid>
+        <!--#endregion-->
+
+
+        <!--#region Filtros Fecha-->
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--#region Filtros-->
+            <Grid Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <!--#region Texto-->
+                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 0 0 20">
+                    <Label Style="{DynamicResource LabelDefault}"
+                           Content="Filtrar por Fecha de Creación"
+                           Margin="0,0,10,0"
+                           ToolTip="1 fecha -> Busqueda a partir de esa fecha &#x0a;2 veces la misma fecha -> Busqueda de un día en específico &#x0a;2 fechas disintas -> Busqueda de facturas entre esas 2 fechas"
+                ToolTipService.ShowDuration="10000"
+                ToolTipService.HorizontalOffset="300"/>
+                    <Border Style="{DynamicResource BorderDefault}"
+                            Margin="0,30,150,0"/>
+                </Grid>
+                <!--#endregion-->
+
+                <!--#region FilterText-->
+                <StackPanel Grid.Row="1"
+                            Grid.Column="0"
+                            Orientation="Horizontal">
+                    <Label Style="{DynamicResource LabelDefault}"
+                           Content="Desde:"
+                           VerticalAlignment="Center"
+                           Margin="0,0,20,0"/>
+                    <TextBox Style="{StaticResource TextBoxDefautl}" 
+                             x:Name="Fecha1"
+                             Width="150"
+                             Margin="0 0 20 0"
+                             PreviewTextInput="Fecha1_PreviewTextInput"
+                             Text="{Binding Date1, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                             ToolTip="{Binding ErrorCollection[Date1]}"
+                             MaxLength="10"
+                             CommandManager.PreviewExecuted="Fecha1_PreviewExecuted"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1"
+                            Grid.Column="1"
+                            Orientation="Horizontal">
+                    <Label Style="{DynamicResource LabelDefault}"
+                           Content="Hasta:"
+                           VerticalAlignment="Center"
+                           Margin="0,0,20,0"/>
+                    <TextBox Style="{StaticResource TextBoxDefautl}" 
+                             x:Name="Fecha2"
+                             Width="150"
+                             PreviewTextInput="Fecha2_PreviewTextInput"
+                             CommandManager.PreviewExecuted="Fecha2_PreviewExecuted"
+                             Text="{Binding Date2, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                             ToolTip="{Binding ErrorCollection[Date2]}"
+                             MaxLength="10"/>
+                </StackPanel>
+
+                <!--#endregion-->
+
+                <!--#region BtnSearch-->
+                <Button Style="{DynamicResource BtnFilter}" 
+                        Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0"
+                        Width="35"
+                        Height="35"
+                        x:Name="SearchDate"
+                        BorderBrush="Transparent"
+                        Background="Transparent"
+                        BorderThickness="2"
+                        Cursor="Hand"
+                        IsDefault="True"
+                        Click="SearchDate_Click">
+                    <Image Source="/Images/Util/White/searchW.png" Width="25"/>
+                </Button>
+                <!--#endregion-->
+            </Grid>
+            <!--#endregion-->
+        </Grid>
+        <!--#endregion-->
+
+
+
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="2"
+                    Grid.Row="6"
+                    HorizontalAlignment="Right">
+            <!--#region Export-->
+            <Button Style="{StaticResource BtnDefault}"              
+                    Margin="0 0 20 0"
+                    MinWidth="200"
+                    x:Name="Export"
+                    Content="Exportar"
+                    Click="Export_Click"
+                    ToolTip="Exportar la tabla a formato Excel"
+                ToolTipService.ShowDuration="8000"
+                ToolTipService.HorizontalOffset="100"/>
+            <!--#endregion-->
+
+            <!--#region MOD y DEL-->
+            <Button Style="{StaticResource BtnDefault}"
+                Margin="0 0 20 0"
+                MinWidth="200"
+                x:Name="BtnEliminar"
+                Content="Cancelar Pedido"
+                Click="BtnEliminar_Click"
+                ToolTip="SOLO PUEDE CANCELAR PEDIDOS REALIZADOS HACE 7 DÍAS"
+                ToolTipService.ShowDuration="10000"
+                ToolTipService.HorizontalOffset="300"/>
+            <!--#endregion-->
+        </StackPanel>
+
+        <!--#region Nº Registros-->
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Left"
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    Margin="20 0 0 0">
+            <TextBlock Style="{StaticResource TextBlockDefault}"
+                           Text="Nº Registros:"
+                           FontSize="15"
+                           FontWeight="Bold"
+                       Margin="0 0 20 0"/>
+            <TextBlock Style="{StaticResource TextBlockDefault}"
+                           x:Name="Registros"
+                           FontSize="15"
+                           FontWeight="Bold"/>
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region Gastos y Cantidad-->
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Left"
+                    Grid.Row="6"
+                    Margin="20 0 0 0">
+            <TextBlock Style="{StaticResource TextBlockDefault}"
+                       Text="Gastos totales:   "
+                       FontSize="20"
+                       ToolTip="Suma del Precio de todos los pedidos mostrados en la tabla"
+                ToolTipService.ShowDuration="8000"
+                ToolTipService.HorizontalOffset="300"/>
+            <TextBlock Style="{StaticResource TextBlockDefault}"
+                       x:Name="Gastos"
+                       MinWidth="120"
+                       FontSize="20"
+                       ToolTip="Suma del Precio de todos los pedidos mostrados en la tabla"
+                ToolTipService.ShowDuration="8000"
+                ToolTipService.HorizontalOffset="300"/>
+            <TextBlock Style="{StaticResource TextBlockDefault}"
+                       Text="Unidades compradas:   "
+                       FontSize="20"
+                       ToolTip="Suma de productos de todos los pedidos mostrados en la tabla"
+                ToolTipService.ShowDuration="8000"
+                ToolTipService.HorizontalOffset="300"/>
+            <TextBlock Style="{StaticResource TextBlockDefault}"
+                       x:Name="Unidades"
+                       MinWidth="120"
+                       FontSize="20"
+                       ToolTip="Suma de productos de todos los pedidos mostrados en la tabla"
+                ToolTipService.ShowDuration="8000"
+                ToolTipService.HorizontalOffset="300"/>
+        </StackPanel>
+        <!--#endregion-->
+
+
+        <!--#region Tabla-->
+        <Grid Grid.Column="1" Grid.ColumnSpan="2"
+              Grid.Row="2" Grid.RowSpan="4"
+              Margin="10,20,10,20">
+            <DataGrid CellStyle="{DynamicResource DataGridCell}" 
+                      RowStyle="{DynamicResource DataGridRow}" 
+                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeader}" 
+                      Style="{DynamicResource DataGridDefault}"
+                      x:Name="OrdersTable"
+                      AutoGenerateColumns="False"
+                      FontSize="15"
+                      Background="Transparent"
+                      PreviewMouseRightButtonDown="OrdersTable_PreviewMouseRightButtonDown"
+                      MouseRightButtonUp="OrdersTable_MouseRightButtonUp"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                      SelectionUnit="Cell"
+                      Foreground="White"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="True"
+                      RowBackground="#22202F"
+                      IsReadOnly="True"
+                      PreviewMouseDoubleClick="OrdersTable_PreviewMouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn x:Name="Modificar" Header="Modificar" MinWidth="60" Width="0.7*" MaxWidth="75" Visibility="Collapsed">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <Button Content="MOD"
+                                            Style="{StaticResource BtnTable}"
+                                            x:Name="BtnUpdate"
+                                            Margin="5"
+                                            CommandParameter="{Binding IdPedido}"
+                                            Click="BtnUpdate_Click"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn x:Name="IdPedido" Header="Nº Pedido" Width="auto" Binding="{Binding IdPedido}" MaxWidth="80" Visibility="Visible"/>
+
+                    <DataGridTextColumn x:Name="IdProveedorAux" Header="Nº" Width="auto" Binding="{Binding IdProveedorAux}" Visibility="Collapsed"/>
+                    <DataGridTextColumn x:Name="CIF" Header="CIF" Width="auto" Binding="{Binding CIF}" MaxWidth="100"/>
+
+                    <DataGridTextColumn x:Name="IdUsuarioAux" Header="Nº Usuario" Width="auto" Binding="{Binding IdUsuarioAux}" Visibility="Collapsed"/>
+                    <DataGridTextColumn x:Name="Apodo" Header="Apodo" Width="auto" Binding="{Binding Apodo}" MaxWidth="130"/>
+
+                    <DataGridTextColumn x:Name="IdProductoAux" Header="Nº Producto" Width="auto" Binding="{Binding IdProductoAux}" Visibility="Collapsed"/>
+                    <DataGridTextColumn x:Name="NombreProducto" Header="Producto" Width="auto" Binding="{Binding NombreProducto}" MaxWidth="130"/>
+
+                    <DataGridTextColumn x:Name="Cantidad" Header="Cantidad" Width="auto" Binding="{Binding Cantidad}" MaxWidth="80"/>
+                    <DataGridTextColumn x:Name="Precio" Header="Precio" Width="auto" Binding="{Binding Precio}" MaxWidth="80"/>
+
+                    <DataGridTextColumn x:Name="FechaModificacion" Header="Fecha Modificación" Width="*" Binding="{Binding FechaModificacion}" />
+                    <DataGridTextColumn x:Name="FechaCreacion" Header="Fecha Creación" Width="*" Binding="{Binding FechaCreacion}"/>
+                    <DataGridTemplateColumn x:Name="Eliminar" Header="Eliminar" MinWidth="50" Width="auto" MaxWidth="65" Visibility="Collapsed">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <Button Content="DEL"
+                                            Style="{StaticResource BtnTable}"
+                                            x:Name="BtnDelete"
+                                            Margin="5"
+                                            CommandParameter="{Binding IdPedido}"
+                                            Click="BtnDelete_Click"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <!--#endregion-->
+
+
+    </Grid>
+</UserControl>
+

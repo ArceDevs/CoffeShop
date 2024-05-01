@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CoffeeDBIntegrada.App" Collapsed="true">
+    <Position X="27.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="22" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAIABAAACQAIAAwCQIAAACAAAAAAAABAAEABAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.Global">
+    <Position X="27.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAkAAAAAAgAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.Core.Adminstration">
+    <Position X="27.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAyAAAIQAAAACgBBIgUECAAIAgAMAABEAJAAEAAQAg=</HashCode>
+      <FileName>Core\Adminstration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.Core.ConexionDB">
+    <Position X="29.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>6OiPGrfWPdN1eHHW6eRQMWDoduuv58/Te7J8tGKOWVg=</HashCode>
+      <FileName>Core\ConexionDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.Core.ObjectChange" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\ObjectChange.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.Core.ObservableObject" Collapsed="true">
+    <Position X="3.25" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\ObservableObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.Core.RelayCommand" BaseTypeListCollapsed="true">
+    <Position X="27.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.CustomersTableView" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="4.75" Width="1.5" />
+    <NestedTypes>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.CustomersTableView.Filter" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\CustomersTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAgAAAAAEBAAAAIQBAhAAAAAACAEQAAAICAQg=</HashCode>
+      <FileName>MVVM\View\CustomersTableView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.CustomersView" BaseTypeListCollapsed="true">
+    <Position X="1.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIgEAAAAAAAAIgICAhBAARBCCACQCAAQAAWAIIASQAA=</HashCode>
+      <FileName>MVVM\View\CustomersView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Poblacion">
+    <Position X="14.5" Y="31.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>MVVM\View\CustomersView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Sexo">
+    <Position X="14.5" Y="29.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\View\CustomersView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.HomeView" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="17.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAGBAAAIgEAABAAIAAQAAAAAARgIIAAAAAKAAIAAAA=</HashCode>
+      <FileName>MVVM\View\HomeView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.MainView" BaseTypeListCollapsed="true">
+    <Position X="2" Y="34.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAACgAIgEAADABJCAICShABA3gIBQIAIALAAUGoA4=</HashCode>
+      <FileName>MVVM\View\MainView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Factura">
+    <Position X="12.75" Y="29.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAQAEABAQAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>MVVM\View\MainView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.SellProductsView" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KSAAAAAshQYgAhCgAwAEFRBQEkgACACAgoiBIASTgMQ=</HashCode>
+      <FileName>MVVM\View\SellProductsView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.ProductoVenta">
+    <Position X="8.75" Y="29.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgCADEAAAAEQAACAAAAAAAAAAAABAAAACAAgAI=</HashCode>
+      <FileName>MVVM\View\SellProductsView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Venta">
+    <Position X="10.75" Y="29.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEBAAAIIQAEABAABIAFgAAAAAACAAgAAAAAAAA=</HashCode>
+      <FileName>MVVM\View\SellProductsView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.UpdateUserView" BaseTypeListCollapsed="true">
+    <Position X="15" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECgAIAAAAAAAAgICAABAAQBCCAAQCAAAAAUQAAASAAA=</HashCode>
+      <FileName>MVVM\View\UpdateUserView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Products.ProductAdminView" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="17.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Products.ProductAdminView.Filter" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Products\ProductAdminView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Products.ProductAdminView.ProductsData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Products\ProductAdminView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AhAAEAAAgBAgAAEJAAAAIRBAQgCAAAAAAEQAAIICAAA=</HashCode>
+      <FileName>MVVM\View\Products\ProductAdminView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Products.ProductTableView" BaseTypeListCollapsed="true">
+    <Position X="21.75" Y="6.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Products.ProductTableView.Category" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Products\ProductTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Products.ProductTableView.Class" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Products\ProductTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Products.ProductTableView.IVA" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Products\ProductTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Products.ProductTableView.ProductoFull" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Products\ProductTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>LCAgIAAGgAQAAhAkBwACMRhABAkACAJAAIUQIiRTAMw=</HashCode>
+      <FileName>MVVM\View\Products\ProductTableView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Providers.ProviderTableView" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="4.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Providers.ProviderTableView.Filter" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Providers\ProviderTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Providers.ProviderTableView.ProvidersData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Providers\ProviderTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AhAAEAAAgAAAAAEFAAAAIRBAhgAAAAAAIEQAAAICAAA=</HashCode>
+      <FileName>MVVM\View\Providers\ProviderTableView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Providers.ProviderView" BaseTypeListCollapsed="true">
+    <Position X="6" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAIAAAAABAIgACAwCAARRADACACyAQAASAAMASQAA=</HashCode>
+      <FileName>MVVM\View\Providers\ProviderView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Providers.Poblacion">
+    <Position X="14.5" Y="33.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>MVVM\View\Providers\ProviderView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Restock.RestockTableView" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="5.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Restock.RestockTableView.Filter" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Restock\RestockTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Restock.RestockTableView.RestockData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Restock\RestockTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AjAgEEEAgAAEAAEBAUAAIRBAhgAAAAACAEQAAIICADA=</HashCode>
+      <FileName>MVVM\View\Restock\RestockTableView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Restock.RestockView" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAQAAJAABQAAAARBAAAiACAAgAgCgAIISQAI=</HashCode>
+      <FileName>MVVM\View\Restock\RestockView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Sells.SellsTableView" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="5.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Sells.SellsTableView.Filter" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Sells\SellsTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Sells.SellsTableView.FacturaFull" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Sells\SellsTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Sells.SellsTableView.DetallesFull" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Sells\SellsTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Sells.SellsTableView.FacturaData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Sells\SellsTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AjhAEEAAgAAEAmAHAggiMRFQBigAAAACAEQAACACACA=</HashCode>
+      <FileName>MVVM\View\Sells\SellsTableView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Sells.StockHistoricoView" BaseTypeListCollapsed="true">
+    <Position X="17.25" Y="5.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Sells.StockHistoricoView.ProductosHistoricos" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Sells\StockHistoricoView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CAAAAEAEgAAFAgAgAwACIRFAAAgAAAACAAQAIAEDAMQ=</HashCode>
+      <FileName>MVVM\View\Sells\StockHistoricoView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Users.UserTableView" BaseTypeListCollapsed="true">
+    <Position X="1.25" Y="17.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Users.UserTableView.Filter" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Users\UserTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CoffeeDBIntegrada.MVVM.View.Users.UserTableView.UsersData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MVVM\View\Users\UserTableView.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AhCAEAQAgAAAAAEBCAAAIRBAhgABAAAAAEQAAAICAAI=</HashCode>
+      <FileName>MVVM\View\Users\UserTableView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Users.UserView" BaseTypeListCollapsed="true">
+    <Position X="24" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECgAIQAQAAAAIgICAgBAARBCCACQCAABAQSQAIASQAA=</HashCode>
+      <FileName>MVVM\View\Users\UserView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.View.Users.Privilegios">
+    <Position X="12.75" Y="32.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\View\Users\UserView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.CustomersTableViewModel">
+    <Position X="19.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAgAAQAACIAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>MVVM\ViewModel\CustomersTableViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.CustomersViewModel">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACgAAQAQCAAAAQAACAEAAAAACAEAIAACAAA=</HashCode>
+      <FileName>MVVM\ViewModel\CustomersViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.HomeViewModel" Collapsed="true">
+    <Position X="3.5" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\HomeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.MainViewModel">
+    <Position X="2" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YAAAAABDGMIkAEAAAAEAABgAQAAgoCChAAACABASAAg=</HashCode>
+      <FileName>MVVM\ViewModel\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.PopUpWindowViewModel" Collapsed="true">
+    <Position X="11" Y="17.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\PopUpWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.SellProductsViewModel">
+    <Position X="4.25" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\SellProductsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.UpdateUserViewModel">
+    <Position X="15" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACgABQAQCQIAIAQADAEAAAAACAEAIAACAAA=</HashCode>
+      <FileName>MVVM\ViewModel\UpdateUserViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.Products.ProductAdminViewModel" Collapsed="true">
+    <Position X="5.5" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\Products\ProductAdminViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.Products.ProductTableViewModel">
+    <Position X="21.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAgAAQAASACAIQQAAAAAAAACAAgAAEACAAA=</HashCode>
+      <FileName>MVVM\ViewModel\Products\ProductTableViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.Providers.ProviderTableViewModel">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAgAAQAACIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\Providers\ProviderTableViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.Providers.ProviderViewModel">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQCgAAQAQCAAAIAQAAAEAAAAAQEAAIAAKAEA=</HashCode>
+      <FileName>MVVM\ViewModel\Providers\ProviderViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.Restock.RestockTableViewModel">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAgAAQAACAAAAQAgAAAAAAAABAAAAAACAAA=</HashCode>
+      <FileName>MVVM\ViewModel\Restock\RestockTableViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.Restock.RestockViewModel">
+    <Position X="10.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAACEAAAgAgQAACEAAAQAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>MVVM\ViewModel\Restock\RestockViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.Sells.SellsTableViewModel">
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAgAAQAACAAAAQAgAAAAAAAABAAAAAACAAA=</HashCode>
+      <FileName>MVVM\ViewModel\Sells\SellsTableViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.Sells.StockHistoricoViewModel">
+    <Position X="17.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAgAAQAACAAAAAAgAAAAAAAABAAAAAACAAA=</HashCode>
+      <FileName>MVVM\ViewModel\Sells\StockHistoricoViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.Users.UserTableViewModel" Collapsed="true">
+    <Position X="1.25" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MVVM\ViewModel\Users\UserTableViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.ViewModel.Users.UserViewModel">
+    <Position X="24" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACgABUAQCQIAIAQADAEAAAACCAEAIAACAAA=</HashCode>
+      <FileName>MVVM\ViewModel\Users\UserViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.Windows.PopUpWindow" BaseTypeListCollapsed="true">
+    <Position X="11" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAACAAAAACAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>MVVM\Windows\PopUpWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.MVVM.Windows.ResetPassword" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="17.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQACAAAAAAAAAIAAACQgAAACAAAAAAAABAAACAAI=</HashCode>
+      <FileName>MVVM\Windows\ResetPassword.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.22" Collapsed="true" />
+  </Class>
+  <Class Name="CoffeeDBIntegrada.Properties.Resources">
+    <Position X="27.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeDBIntegrada.Properties.Settings">
+    <Position X="27.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
