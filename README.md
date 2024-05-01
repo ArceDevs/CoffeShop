@@ -3,7 +3,7 @@ Author: Alonso Hans Arce Centi
 <br>
 Education Level: Advanced Vocational Tranning
 <br>
-Course: Multiplatform application developer
+Course: Multiplatform application developement
 
 
 ### Description
