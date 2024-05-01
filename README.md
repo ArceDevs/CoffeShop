@@ -8,6 +8,6 @@ Course: Multiplatform application developer
 
 ### Description
 Desktop app developed in WPF
-The proyect consist on a CRUD application with some characteristic of a POS to ease the work load of coffe shop manager.
+The proyect consist on a CRUD application with some characteristic of a POS device to ease the work load of coffee shop manager.
 <br>
 The application includes employee administration, sales retailing, sales statictics and stock management.
